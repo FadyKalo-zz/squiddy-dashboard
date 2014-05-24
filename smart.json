@@ -1,3 +1,8 @@
 {
-  "packages": {}
+  "packages": {
+    "squiddy-dependency": {
+      "git": "https://securityCollaborator:squiddypassword1@github.com/giuse88/squiddy-dependency.git",
+      "tag": "v0.9"
+    }
+  }
 }

@@ -1,0 +1,6 @@
+# JetBrains stuff
+.idea
+
+# Mac Stuff
+.DS_Store
+.build*
