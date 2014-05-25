@@ -50,5 +50,16 @@ Template.eventItem.events({
   'click .grid .tools .collapse, click .grid .tools .expand': function (e) {
     var $target = $(e.target);
     collapseToggle($target);
+  },
+  'click .grid .tools a.remove': function (e) {
+    var $target = $(e.target);
+    removeToggle($target);
+  },
+  'click .grid .tools a.reload': function (e) {
+    var $target = $(e.target);
+    refreshToggle($target);
   }
+
 });
+
+//$('.grid .tools a.remove')

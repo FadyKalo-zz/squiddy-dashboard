@@ -1,5 +1,4 @@
 //Template.home.rendered = function () {
-//  $(".page-content").css("margin", "0");
 //
 //  calculateHeight();
 //  $(".remove-widget").click(function () {
