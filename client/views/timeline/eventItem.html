@@ -1,0 +1,108 @@
+<template name="eventItem">
+  <li>
+    <time class="cbp_tmtime" datetime="2013-04-10 18:30">
+      <span class="date">{{fromNow}}</span>
+      <span class="time">{{fromNowTime}} <span class="semi-bold">{{ampm}}</span></span>
+    </time>
+    <div class="cbp_tmicon primary animated bounceIn"><i class="fa fa-comments"></i></div>
+    <div class="cbp_tmlabel">
+      <div class="p-t-10 p-l-30 p-r-20 p-b-20 xs-p-r-10 xs-p-l-10 xs-p-t-5">
+        <h4 class="inline m-b-5"><span class="text-success semi-bold">{{title}}</span></h4>
+        <h5 class="inline muted semi-bold m-b-5">@{{author}}</h5>
+
+        <div class="muted">Event Created - {{created}}</div>
+        <p class="m-t-5 dark-text"> {{summary}} </p>
+      </div>
+
+      <div class="clearfix"></div>
+      <div class="tiles grey p-t-10 p-b-10 p-l-20 p-r-20">
+        <div class="row">
+          <div class="col-md-6">
+            <!--<h5 class="inline m-r-10">205 comments</h5>-->
+            <!--<h5 class="inline">21,586 People like this</h5>-->
+            <h5 class="inline">Duration: {{duration}}</h5>
+          </div>
+          <div class="col-md-6">
+            <ul class="my-friends no-margin pull-right">
+              {{#each participants}}
+              <li>
+                <div class="profile-pic">
+                  <img width="35" height="35" data-src-retina={{profile.picture}}
+                       data-src={{profile.picture}} src={{profile.picture}} alt={{author}}>
+                </div>
+              </li>
+              {{/each}}
+
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <time class="cbp_tmtime" datetime="2013-04-10 18:30">
+      <span class="date">{{fromNow}}</span>
+      <span class="time">{{fromNowTime}} <span class="semi-bold">{{ampm}}</span></span>
+    </time>
+    <div class="cbp_tmicon info animated bounceIn"><i class="fa fa-quote-left"></i></div>
+    <div class="cbp_tmlabel">
+      <div class="grid simple">
+        <div class="grid-title no-border">
+          <h4 class="inline m-b-5"><span class="text-success semi-bold">{{title}}</span></h4>
+          <h5 class="inline muted semi-bold m-b-5">@{{author}}</h5>
+          <div class="tools">
+            <a href="javascript:;" class="collapse"></a>
+            <!--<a href="#grid-config" data-toggle="modal" class="config"></a>-->
+            <!--<a href="javascript:;" class="reload"></a>-->
+            <!--<a href="javascript:;" class="remove"></a>-->
+          </div>
+        </div>
+        <div class="grid-body no-border">
+
+
+          <!--<div class="p-t-10 p-l-30 p-r-20 p-b-20 xs-p-r-10 xs-p-l-10 xs-p-t-5">-->
+            <h4 class="inline m-b-5"><span class="text-success semi-bold">{{title}}</span></h4>
+            <h5 class="inline muted semi-bold m-b-5">@{{author}}</h5>
+
+            <div class="muted">Event Created - {{created}}</div>
+            <p class="m-t-5 dark-text"> {{summary}} </p>
+          <!--</div>-->
+
+          <div class="clearfix"></div>
+
+
+        </div>
+        <div class="tiles grey p-t-10 p-b-10 p-l-20 p-r-20">
+          <div class="row">
+            <div class="col-md-6">
+              <!--<h5 class="inline m-r-10">205 comments</h5>-->
+              <!--<h5 class="inline">21,586 People like this</h5>-->
+              <h5 class="inline">Duration: {{duration}}</h5>
+            </div>
+            <div class="col-md-6">
+              <ul class="my-friends no-margin pull-right">
+                {{#each participants}}
+                <li>
+                  <div class="profile-pic">
+                    <img width="35" height="35" data-src-retina={{profile.picture}}
+                         data-src={{profile.picture}} src={{profile.picture}} alt={{author}}>
+                  </div>
+                </li>
+                {{/each}}
+
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </li>
+
+</template>
