@@ -2,6 +2,11 @@
   <div class="row">
     <div class="col-md-10 col-vlg-7">
       <ul class="cbp_tmtimeline">
+
+        {{#each events}}
+        {{> event}}
+        {{/each}}
+
         <li>
           <time class="cbp_tmtime" datetime="2013-04-10 18:30">
             <span class="date">today</span>

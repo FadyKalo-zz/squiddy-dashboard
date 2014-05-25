@@ -8,6 +8,7 @@
     "squiddy-dependency": {
       "git": "https://securityCollaborator:squiddypassword1@github.com/giuse88/squiddy-dependency.git",
       "tag": "v1.3"
-    }
+    },
+    "moment-with-langs": {}
   }
 }
