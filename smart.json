@@ -1,9 +1,13 @@
 {
+  "name": "squiddy-dashboard",
+  "description": "Meteorite package containing dashboard package for Squiddy.",
+  "homepage": "https://securityCollaborator:squiddypassword1@github.com/FadyKalo/squiddy-dashboard.git",
+  "author": "Giuseppe Pes <giuse88@gmail.com>, Fady Kalo <fadykalo@gmail.com>",
+  "git": "https://github.com/FadyKalo/squiddy-dashboard.git",
   "packages": {
     "squiddy-dependency": {
       "git": "https://securityCollaborator:squiddypassword1@github.com/giuse88/squiddy-dependency.git",
-      "tag": "v1.1"
-    },
-    "jquery-ui": {}
+      "tag": "v1.3"
+    }
   }
 }
