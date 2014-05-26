@@ -4,7 +4,10 @@ Events = new Meteor.Collection('events');
 Meteor.methods({
   createEvent: function (eventAttributes) {
 
+    var user = Meteor.users.find({username:'fady'});
+//    console.log(user);
     var event = _.extend(eventAttributes, {
+      url:"https://squiddy.io",
       title: eventAttributes.title,
       userId: user._id,
       author: user.username,

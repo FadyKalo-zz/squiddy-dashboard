@@ -1,41 +1,43 @@
 <template name="eventSubmitForm">
 
   <div class="col-md-6">
-    <h3>Input <span class="semi-bold">Masks</span></h3>
-    <p>These assure the user will never enter invalid phone no, email or anything that has a pattern even without validations</p>
+    <h3>Create <span class="semi-bold">Event</span></h3>
+
+    <p>Simple form to create a new event (To be moved!)</p>
     <br>
-    <div class="form-group">
-      <label class="form-label">Date</label>
-      <span class="help">e.g. "25/12/2013"</span>
-      <div class="controls">
-        <input type="text" class="form-control" id="date">
+
+    <form class="main">
+      <div class="row form-row">
+        <div class="col-md-12">
+          <input name="title" id="title" type="text" class="form-control" placeholder="Title">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Telephone</label>
-      <span class="help">e.g. "(324) 234-3243"</span>
-      <div class="controls">
-        <input type="text" class="form-control" id="phone">
+      <div class="row form-row">
+        <div class="col-md-12">
+          <input name="summary" id="summary" type="text" class="form-control" placeholder="Summary">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Custom</label>
-      <span class="help">e.g. "23-4324324"</span>
-      <div class="controls">
-        <input type="text" class="form-control" id="tin">
+      <div class="row form-row">
+        <div class="col-md-12">
+          <input name="start" id="start" type="text" class="form-control" placeholder="Start">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Social Security Number</label>
-      <span class="help">e.g. "432-43-2432"</span>
-      <div class="controls">
-        <input type="text" placeholder="You can put anything here" class="form-control" id="ssn">
+      <div class="row form-row">
+        <div class="col-md-12">
+          <input name="end" id="end" type="text" class="form-control" placeholder="End">
+        </div>
       </div>
-    </div>
-    <div class="pull-right">
-      <button class="btn btn-danger btn-cons" type="submit"><i class="icon-ok"></i> Save</button>
-      <button class="btn btn-white btn-cons" type="button">Cancel</button>
-    </div>
+      <div class="row form-row">
+        <div class="col-md-12">
+          <input name="participants" id="participants" type="text" class="form-control" placeholder="Participants">
+        </div>
+      </div>
+
+      <div class="pull-right">
+        <button class="btn btn-danger btn-cons" type="submit"><i class="icon-ok"></i> Save</button>
+        <button class="btn btn-white btn-cons" type="button">Cancel</button>
+      </div>
+    </form>
   </div>
 
 

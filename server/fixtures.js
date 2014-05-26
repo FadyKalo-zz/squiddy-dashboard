@@ -8,6 +8,7 @@ if (Events.find().count() === 0) {
   // create two users
   var giuseppeId = Meteor.users.insert({
     profile: {
+      username:'giuse88',
       name: 'Giuseppe Pes',
       picture: 'https://avatars1.githubusercontent.com/u/1751200?s=400'
     }
@@ -16,6 +17,7 @@ if (Events.find().count() === 0) {
 
   var fadyId = Meteor.users.insert({
     profile: {
+      username:'fady',
       name: 'Fady Kalo',
       picture: 'https://avatars3.githubusercontent.com/u/3518488?s=460'
     }
