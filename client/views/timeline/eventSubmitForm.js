@@ -6,9 +6,11 @@ Template.eventSubmitForm.events({
       summary: $(e.target).find('[name=summary]').val(),
       start: $(e.target).find('[name=start]').val(),
       end: $(e.target).find('[name=end]').val(),
-      participants: $(e.target).find('[name=participants]').val()
-    }
+      participants: $(e.target).find('[name=participants]').tagsinput('items')
+    };
 
+//    console.log($(e.target).find('[name=participants]').tagsinput('items'))
+//    console.log(event.participants);
     Meteor.call('createEvent', event, function (error, id) {
       if (error) {
         // display the error to the user
@@ -19,3 +21,13 @@ Template.eventSubmitForm.events({
     });
   }
 });
+
+
+Template.eventSubmitForm.rendered = function(){
+  $('#participants').tagsinput({
+    typeahead: {
+      source: ['fadykalo@gmail.com', 'giuse88@gmail.com', 'example@gmail.com']
+    }
+  });
+
+}
