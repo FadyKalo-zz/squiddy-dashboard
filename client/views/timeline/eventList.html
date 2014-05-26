@@ -1,6 +1,7 @@
 <template name="eventList">
   <div class="row">
-    <div class="col-md-10 col-vlg-7">
+    <!--<div class="col-md-6 col-vlg-7">-->
+    <div class="col-md-6">
       <ul class="cbp_tmtimeline">
 
         {{#each events}}
@@ -9,5 +10,6 @@
 
       </ul>
     </div>
+    {{> eventSubmitForm}}
   </div>
 </template>

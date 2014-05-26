@@ -1,4 +1,4 @@
-Template.eventSubmit.events({
+Template.eventSubmitForm.events({
   'submit form': function (e) {
     e.preventDefault();
     var event = {
@@ -16,5 +16,11 @@ Template.eventSubmit.events({
       } else {
       }
     });
+  },
+
+  "click .open-modal": function (e, t) {
+//    e.preventDefault();
+    console.log(e.target);
+//    $("#myModal").modal("show");
   }
 });

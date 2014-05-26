@@ -4,3 +4,6 @@
 # Mac Stuff
 .DS_Store
 .build*
+
+# meteor
+packages
