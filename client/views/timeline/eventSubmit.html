@@ -1,3 +1,8 @@
 <template name="eventSubmit">
+  <button class="btn btn-lg" data-toggle="modal" data-target="#myModal">Create Event</button>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+       style="display: none;">
+    {{> eventSubmitBody}}
+  </div>
 </template>

@@ -4,6 +4,6 @@
 # but you can also edit it by hand.
 
 standard-app-packages
+accounts-ui
 squiddy-dependency
 moment-with-langs
-accounts-ui
