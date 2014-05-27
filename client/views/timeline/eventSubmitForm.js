@@ -9,8 +9,6 @@ Template.eventSubmitForm.events({
       participants: $(e.target).find('[name=participants]').tagsinput('items')
     };
 
-//    console.log($(e.target).find('[name=participants]').tagsinput('items'))
-//    console.log(event.participants);
     Meteor.call('createEvent', event, function (error, id) {
       if (error) {
         // display the error to the user
@@ -30,4 +28,48 @@ Template.eventSubmitForm.rendered = function(){
     }
   });
 
-}
+  var my_date = new Date();
+  var today = moment().format()
+  my_date.setFullYear(my_date.getFullYear() - 18, my_date.getMonth(), my_date.getDay()-1)
+
+
+  a=moment(my_date).format('L');
+  console.log(today);
+
+  $('#start').datepicker({
+    format: "dd/mm/yyyy",
+    startView: 0,
+    autoclose: true,
+    startDate: today
+  });
+  $('#end').datepicker({
+    format: "dd/mm/yyyy",
+    startView: 0,
+    autoclose: true,
+    startDate: today
+  });
+
+//  $('#time').timepicker();
+  //HTML5 editor
+//  $('#text-editor').wysihtml5();
+};
+
+
+//  Template.eventSubmitForm.rendered = function () {
+//
+//    $(".inside").children('input').blur(function () {
+//      $(this).parent().children('.add-on').removeClass('input-focus');
+//    });
+//
+//    $(".inside").children('input').focus(function () {
+//      $(this).parent().children('.add-on').addClass('input-focus');
+//    });
+//
+//    $(".input-group.transparent").children('input').blur(function () {
+//      $(this).parent().children('.input-group-addon').removeClass('input-focus');
+//    });
+//
+//    $(".input-group.transparent").children('input').focus(function () {
+//      $(this).parent().children('.input-group-addon').addClass('input-focus');
+//    });
+//}

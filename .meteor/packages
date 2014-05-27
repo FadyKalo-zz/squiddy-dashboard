@@ -4,6 +4,8 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-accounts-ui
 squiddy-dependency
+jquery-ui
 moment-with-langs
+accounts-ui
+accounts-password
