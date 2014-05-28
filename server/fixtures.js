@@ -39,7 +39,7 @@ if (Meteor.isServer) {
       start: now - 10 * 3600 * 1000,
       end: now - 9.5 * 3600 * 1000,
       participants: [
-        fady
+        {id: fady}
       ]
     });
 
@@ -52,8 +52,8 @@ if (Meteor.isServer) {
       start: now - 7 * 3600 * 1000,
       end: now - 6 * 3600 * 1000,
       participants: [
-        fady,
-        giuseppe
+        {id: fady},
+        {id: giuseppe}
       ]
     });
 
@@ -66,7 +66,7 @@ if (Meteor.isServer) {
       start: now - 12 * 3600 * 1000,
       end: now - 10 * 3600 * 1000,
       participants: [
-        giuseppe
+        {id: giuseppe}
       ]
     });
     var event4 = Events.insert({
@@ -78,8 +78,8 @@ if (Meteor.isServer) {
       start: now - 24 * 3600 * 1000,
       end: now - 23.5 * 3600 * 1000,
       participants: [
-        fady,
-        giuseppe
+        {id: fady},
+        {id: giuseppe}
       ]
     });
     var event5 = Events.insert({
@@ -91,8 +91,27 @@ if (Meteor.isServer) {
       start: now - 72 * 3600 * 1000,
       end: now - 70.5 * 3600 * 1000,
       participants: [
-        giuseppe,
-        fady
+        {id: giuseppe},
+        {id: fady}
+      ]
+    });
+  }
+
+  if (Events.find({author: 'admin'}).count() === 0 && Meteor.users.find({username: "admin"}).count() === 1) {
+    var fady = Meteor.users.findOne({username: "fady"});
+    var admin = Meteor.users.findOne({username: "admin"});
+    var profile = admin.profile = {name: "admin"}
+    var event6 = Events.insert({
+      title: 'ADMIN EVENT',
+      summary: "some admin stuff.",
+      userId: admin._id,
+      author: admin.profile.name,
+      time: now - 100 * 3600 * 1000,
+      start: now - 72 * 3600 * 1000,
+      end: now - 70.5 * 3600 * 1000,
+      participants: [
+        {id: admin},
+        {id: fady}
       ]
     });
   }

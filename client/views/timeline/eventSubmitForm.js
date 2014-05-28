@@ -12,7 +12,10 @@ Template.eventSubmitForm.events({
     Meteor.call('createEvent', event, function (error, id) {
       if (error) {
         // display the error to the user
-        console.log("error occured.")
+        if (error.error === 401) {
+//          console.log(error.message);
+        }
+        console.log(error.message);
       } else {
         console.log("OK")
       }
@@ -21,7 +24,7 @@ Template.eventSubmitForm.events({
 });
 
 
-Template.eventSubmitForm.rendered = function(){
+Template.eventSubmitForm.rendered = function () {
   $('#participants').tagsinput({
     typeahead: {
       source: ['fadykalo@gmail.com', 'giuse88@gmail.com', 'example@gmail.com']
@@ -30,10 +33,10 @@ Template.eventSubmitForm.rendered = function(){
 
   var my_date = new Date();
   var today = moment().format()
-  my_date.setFullYear(my_date.getFullYear() - 18, my_date.getMonth(), my_date.getDay()-1)
+  my_date.setFullYear(my_date.getFullYear() - 18, my_date.getMonth(), my_date.getDay() - 1)
 
 
-  a=moment(my_date).format('L');
+  a = moment(my_date).format('L');
   console.log(today);
 
   $('#start').datepicker({
