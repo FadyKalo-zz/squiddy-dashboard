@@ -41,8 +41,10 @@ Template.eventItem.helpers({
 //  ownPost: function () {
 //    return this.userId === Meteor.userId();
 //  }
-  commentsCount: function () {
-    return Events.find({postId: this._id}).count();
+  partCount: function () {
+    // the creator always participates.
+    return this.participants.length +1;
+//    return Events.find({postId: this._id}).count();
   }
 });
 

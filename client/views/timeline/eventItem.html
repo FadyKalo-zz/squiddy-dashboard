@@ -53,7 +53,7 @@
       <div class="grid simple timeline">
         <div class="grid-title no-border">
           <h4 class="inline m-b-5 h4-timeline "><span class="text-success semi-bold">{{title}}</span></h4>
-          <h5 class="inline muted semi-bold m-b-5">@{{author}}</h5>
+          <h5 class="inline muted semi-bold m-b-5">@{{userId.username}}</h5>
 
           <div class="tools">
             <a href="javascript:;" class="collapse"></a>
@@ -71,15 +71,22 @@
         <div class="tiles grey p-t-10 p-b-10 p-l-20 p-r-20">
           <div class="row">
             <div class="col-md-6">
-              <h5 class="inline">Duration: {{duration}}</h5>
+              <h5 class="inline">Duration: {{duration}} - Participants: {{partCount}}</h5>
             </div>
             <div class="col-md-6">
+
               <ul class="my-friends no-margin pull-right">
+                <li>
+                  <div class="profile-pic">
+                    <img width="35" height="35" data-src-retina={{userId.profile.picture}}
+                         data-src={{userId.profile.picture}} src={{userId.profile.picture}} alt={{author}}>
+                  </div>
+                </li>
                 {{#each participants}}
                 <li>
                   <div class="profile-pic">
-                    <img width="35" height="35" data-src-retina={{id.profile.picture}}
-                         data-src={{id.profile.picture}} src={{id.profile.picture}} alt={{author}}>
+                    <img width="35" height="35" data-src-retina={{profile.picture}}
+                         data-src={{profile.picture}} src={{profile.picture}} alt={{author}}>
                   </div>
                 </li>
                 {{/each}}
