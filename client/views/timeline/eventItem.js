@@ -38,14 +38,47 @@ Template.eventItem.helpers({
     var mom = moment(this.start).format('a');
     return mom;
   },
-//  ownPost: function () {
-//    return this.userId === Meteor.userId();
-//  }
+
   partCount: function () {
-    // the creator always participates.
-    return this.participants.length +1;
+    return this.rsvps.length;
 //    return Events.find({postId: this._id}).count();
+  },
+  //  ownPost: function () {
+  //    return this.userId === Meteor.userId();
+  //  },
+  rsvpIs: function (what) {
+    return this.rsvp === what;
+  },
+  rsvpName: function () {
+    return displayName(this.user);
+  },
+  creatorName: function () {
+    var owner = Meteor.users.findOne(this.userId);
+    console.log(owner)
+    if (owner._id === Meteor.userId())
+      return "me";
+    return displayName(owner);
+  },
+  canInvite: function () {
+    console.log(Meteor.userId() === this.userId._id);
+    return this.userId._id === Meteor.userId();
+  },
+  invitationName: function () {
+    return displayName(this);
+  },
+
+  nobody: function () {
+    return (this.rsvps.length + this.invited.length === 0);
+  },
+  outstandingInvitations: function () {
+    var event = Events.findOne(this._id);
+    return Meteor.users.find({$and: [
+      {_id: {$in: event.invited}}, // they're invited
+      {_id: {$nin: _.pluck(event.rsvps, 'user')}} // but haven't RSVP'd
+    ]});
   }
+
+
 });
 
 Template.eventItem.events({

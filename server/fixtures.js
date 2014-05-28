@@ -12,12 +12,12 @@ if (Meteor.isServer) {
 //        { address: "itsnotfady@gmail.com", verified: true }
 //      ],
       email: "itsnotfady@gmail.com",
-
       profile: {
         name: 'Admin Admin',
         picture: 'https://avatars3.githubusercontent.com/u/4085789?s=460'
       }
     });
+
     var admin = Meteor.users.findOne(adminId);
     // create two users
     var giuseppeId = Accounts.createUser({
@@ -58,9 +58,11 @@ if (Meteor.isServer) {
       time: now - 13 * 3600 * 1000,
       start: now - 10 * 3600 * 1000,
       end: now - 9.5 * 3600 * 1000,
-      invited: [fady],
-      participants: [fady]
-//      participants: [
+      rsvps: [
+        {user: fady, rsvp: "yes"}
+      ],
+      invited: [fady]
+//      invited: [
 //        {id: fady}
 //      ]
     });
@@ -73,9 +75,11 @@ if (Meteor.isServer) {
       time: now - 9 * 3600 * 1000,
       start: now - 7 * 3600 * 1000,
       end: now - 6 * 3600 * 1000,
-      invited: [giuseppe],
-      participants: [giuseppe]
-//      participants: [
+      rsvps: [
+        {user: giuseppe, rsvp: "yes"}
+      ],
+      invited: [giuseppe]
+//      invited: [
 //        {id: fady},
 //        {id: giuseppe}
 //      ]
@@ -89,9 +93,11 @@ if (Meteor.isServer) {
       time: now - 20 * 3600 * 1000,
       start: now - 12 * 3600 * 1000,
       end: now - 10 * 3600 * 1000,
-      invited: [],
-      participants: []
-//      participants: [
+      rsvps: [
+        {user: fady, rsvp: "maybe"}
+      ],
+      invited: [fady]
+//      invited: [
 //        {id: giuseppe}
 //      ]
     });
@@ -103,9 +109,11 @@ if (Meteor.isServer) {
       time: now - 29 * 3600 * 1000,
       start: now - 24 * 3600 * 1000,
       end: now - 23.5 * 3600 * 1000,
-      invited: [giuseppe],
-      participants: [giuseppe]
-//      participants: [
+      rsvps: [
+        {user: giuseppe, rsvp: "yes"}
+      ],
+      invited: [giuseppe]
+//      invited: [
 //        {id: fady},
 //        {id: giuseppe}
 //      ]
@@ -118,9 +126,11 @@ if (Meteor.isServer) {
       time: now - 100 * 3600 * 1000,
       start: now - 72 * 3600 * 1000,
       end: now - 70.5 * 3600 * 1000,
-      invited: [fady],
-      participants: [fady]
-//      participants: [
+      rsvps: [
+        {user: fady, rsvp: "yes"}
+      ],
+      invited: [fady]
+//      invited: [
 //        {id: giuseppe},
 //        {id: fady}
 //      ]
@@ -130,7 +140,7 @@ if (Meteor.isServer) {
   if (Events.find({author: 'admin'}).count() === 0 && Meteor.users.find({username: "admin"}).count() === 1) {
     var fady = Meteor.users.findOne({username: "fady"});
 //    var admin = Meteor.users.findOne({username: "admin"});
-    var profile = admin.profile = {name: "admin"}
+//    var profile = admin.profile = {name: "admin"}
     var event6 = Events.insert({
       title: 'ADMIN EVENT',
       summary: "some admin stuff.",
@@ -139,9 +149,12 @@ if (Meteor.isServer) {
       time: now - 100 * 3600 * 1000,
       start: now - 72 * 3600 * 1000,
       end: now - 70.5 * 3600 * 1000,
-      invited: [fady],
-      participants: [fady]
-//      participants: [
+      rsvps: [
+        {user: fady, rsvp: "yes"},
+        {user: giuseppe, rsvp: "no"}
+      ],
+      invited: [fady, giuseppe]
+//      invited: [
 //        {id: admin},
 //        {id: fady}
 //      ]

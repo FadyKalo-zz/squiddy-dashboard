@@ -6,7 +6,7 @@ Template.eventSubmitForm.events({
       summary: $(e.target).find('[name=summary]').val(),
       start: $(e.target).find('[name=start]').val(),
       end: $(e.target).find('[name=end]').val(),
-      participants: $(e.target).find('[name=participants]').tagsinput('items')
+      invited: $(e.target).find('[name=invited]').tagsinput('items')
     };
 
     Meteor.call('createEvent', event, function (error, id) {
@@ -25,7 +25,7 @@ Template.eventSubmitForm.events({
 
 
 Template.eventSubmitForm.rendered = function () {
-  $('#participants').tagsinput({
+  $('#invited').tagsinput({
     typeahead: {
       source: ['fadykalo@gmail.com', 'giuse88@gmail.com', 'example@gmail.com']
     }
