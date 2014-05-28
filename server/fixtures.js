@@ -8,7 +8,11 @@ if (Meteor.isServer) {
     var adminId = Accounts.createUser({
       username: 'admin',
       password: 'adminadmin',
-      email:  "itsnotfady@gmail.com",
+//      emails: [
+//        { address: "itsnotfady@gmail.com", verified: true }
+//      ],
+      email: "itsnotfady@gmail.com",
+
       profile: {
         name: 'Admin Admin',
         picture: 'https://avatars3.githubusercontent.com/u/4085789?s=460'
@@ -19,6 +23,9 @@ if (Meteor.isServer) {
     var giuseppeId = Accounts.createUser({
       username: 'giuse88',
       password: 'giuse88',
+//      emails: [
+//        { address: "giuse88@gmail.com", verified: true }
+//      ],
       email: "giuse88@gmail.com",
       profile: {
         name: 'Giuseppe Pes',
@@ -28,14 +35,19 @@ if (Meteor.isServer) {
     var giuseppe = Meteor.users.findOne(giuseppeId);
 
     var fadyId = Accounts.createUser({
-      username: 'fady',
-      password:'fadyfady',
-      email: "fadykalo@gmail.com",
-      profile: {
-        name: 'Fady Kalo',
-        picture: 'https://avatars3.githubusercontent.com/u/3518488?s=460'
-      }
-    });
+          username: 'fady',
+          password: 'fadyfady',
+//          emails: [
+//            { address: "fadykalo@gmail.com", verified: true }
+//          ],
+          email: "fadykalo@gmail.com",
+          profile: {
+            name: 'Fady Kalo',
+            picture: 'https://avatars3.githubusercontent.com/u/3518488?s=460'
+          }
+        }
+      )
+      ;
     var fady = Meteor.users.findOne(fadyId);
 
     var event2 = Events.insert({

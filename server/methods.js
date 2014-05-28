@@ -21,9 +21,7 @@ Meteor.methods({
     var eventId = Events.insert(event);
 //    if the event was created
     if(eventId){
-      console.log("i'm in",eventId)
-      console.log(eventAttributes)
-      console.log(event.participants)
+
       addSend(eventId, eventAttributes.participants)
     }
     return eventId;
@@ -33,8 +31,7 @@ Meteor.methods({
     check(eventId, String);
     check(userId, String);
     var event = Events.findOne(eventId);
-    console.log("event: ",event.userId._id)
-    console.log("event: ",this.userId)
+
     if (!event || event.userId._id !== this.userId) {
       throw new Meteor.Error(404, "No such event");
     }
@@ -43,6 +40,9 @@ Meteor.methods({
 
       var from = contactEmail(Meteor.users.findOne(this.userId));
       var to = contactEmail(Meteor.users.findOne(userId));
+
+      console.log(from);
+      console.log(to);
 
       if (Meteor.isServer && to) {
         // This code only runs on the server. If you didn't want clients
@@ -70,7 +70,6 @@ function mapInvitee(participantList) {
 
 function addSend(eventId,participantList){
   _.each(participantList,function(part){
-
     Meteor.call('invite',eventId, part._id)
   });
 
@@ -84,8 +83,8 @@ function addSend(eventId,participantList){
 
 //TODO this is based on how i have created the fixture for the user.
 var contactEmail = function (user) {
-  if (user.email && user.email.length)
-    return user.email;
+  if (user.emails && user.emails.length)
+    return user.emails[0].address;
   if (user.services && user.services.facebook && user.services.facebook.email)
     return user.services.facebook.email;
   return null;
