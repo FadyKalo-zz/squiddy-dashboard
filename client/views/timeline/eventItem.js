@@ -50,32 +50,47 @@ Template.eventItem.helpers({
     return this.rsvp === what;
   },
   rsvpName: function () {
-    return displayName(this.user);
+    return formatName(this.user);
   },
   creatorName: function () {
-    var owner = Meteor.users.findOne(this.userId);
-    console.log(owner)
+    var owner = this.userId
+    console.log("OWNER:",this.userId)
     if (owner._id === Meteor.userId())
       return "me";
-    return displayName(owner);
+    return formatName(owner);
   },
   canInvite: function () {
-    console.log(Meteor.userId() === this.userId._id);
+//    console.log(Meteor.userId() === this.userId._id);
     return this.userId._id === Meteor.userId();
   },
   invitationName: function () {
-    return displayName(this);
+//    console.log(formatName(this));
+    var test = formatName(this)
+    console.log(test)
+    return test;
   },
 
   nobody: function () {
     return (this.rsvps.length + this.invited.length === 0);
   },
   outstandingInvitations: function () {
-    var event = Events.findOne(this._id);
-    return Meteor.users.find({$and: [
-      {_id: {$in: event.invited}}, // they're invited
-      {_id: {$nin: _.pluck(event.rsvps, 'user')}} // but haven't RSVP'd
+    var userList = ( _.pluck(this.rsvps, 'user'));
+
+    console.log(this.title, _.pluck(this.invited, '_id'), _.pluck(userList, '_id'))
+    var condition = Meteor.users.find({$and: [
+      {_id: {$in: _.pluck(this.invited, '_id')}}, // they're invited
+      {_id: {$nin: _.pluck(userList, '_id')}} // but haven't RSVP'd
     ]});
+    console.log("Condition", condition)
+    return condition;
+  },
+  maybeChosen: function (what) {
+    var myRsvp = _.find(this.rsvps, function (r) {
+      console.log(r.user._id=== Meteor.userId())
+      return r.user._id === Meteor.userId();
+    }) || {};
+
+    return what == myRsvp.rsvp ? "chosen btn-inverse" : "";
   }
 
 
@@ -93,7 +108,38 @@ Template.eventItem.events({
   'click .grid .tools a.reload': function (e) {
     var $target = $(e.target);
     refreshToggle($target);
+  },
+  'click .rsvp_yes': function () {
+    console.log(this)
+    Meteor.call("rsvp", this._id, "yes", function (error, id) {
+      if (error) {
+        // display the error to the user
+        if (error.error === 401) {
+//          console.log(error.message);
+        }
+        console.log(error.message);
+      } else {
+        console.log("OK")
+      }
+    });
+    return false;
   }
+//  'click .rsvp_maybe': function () {
+//    Meteor.call("rsvp", Session.get("selected"), "maybe");
+//    return false;
+//  },
+//  'click .rsvp_no': function () {
+//    Meteor.call("rsvp", Session.get("selected"), "no");
+//    return false;
+//  },
+//  'click .invite': function () {
+////    openInviteDialog();
+//    return false;
+//  },
+//  'click .remove': function () {
+//    Events.remove(this._id);
+//    return false;
+//  }
 
 });
 

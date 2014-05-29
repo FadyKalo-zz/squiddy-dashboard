@@ -3,11 +3,11 @@
     <!--<div class="col-md-6 col-vlg-7">-->
     <div class="col-md-6">
       <ul class="cbp_tmtimeline">
-
+        {{#if currentUser}}
         {{#each events}}
         {{> eventItem}}
         {{/each}}
-
+        {{/if}}
       </ul>
     </div>
     {{> eventSubmitForm}}

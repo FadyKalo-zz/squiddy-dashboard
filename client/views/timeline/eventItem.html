@@ -96,17 +96,31 @@
           </div>
           {{/each}}
 
-          <!--{{#if nobody}}-->
-          <!--<div>Nobody.</div>-->
-          <!--{{/if}}-->
+          {{#if nobody}}
+          <div>Nobody.</div>
+          {{/if}}
 
 
           {{#if canInvite}}
-          <p>afjfjsdakjsdlfjskdfhskjfhkjsdf</p>
           <div class="invite">
             <a href="#" class="btn btn-mini invite">Add people</a>
           </div>
           {{/if}}
+
+          <div class="rsvp-buttons">
+            {{#if currentUser}}
+            <input type="button" value="I'm going!"
+                   class="btn btn-small rsvp_yes {{maybeChosen "yes"}}">
+            <input type="button" value="Maybe"
+                   class="btn btn-small rsvp_maybe {{maybeChosen "maybe"}}">
+            <input type="button" value="No"
+                   class="btn btn-small rsvp_no {{maybeChosen "no"}}">
+            {{else}}
+            <i>Sign in to RSVP for this party.</i>
+            {{/if}}
+            <p><small>Posted by {{creatorName}}</small></p>
+          </div>
+
 
           <div class="clearfix"></div>
         </div>
@@ -118,12 +132,6 @@
             <div class="col-md-6">
 
               <ul class="my-friends no-margin pull-right">
-                <!--<li>-->
-                <!--<div class="profile-pic">-->
-                <!--<img width="35" height="35" data-src-retina={{userId.profile.picture}}-->
-                <!--data-src={{userId.profile.picture}} src={{userId.profile.picture}} alt={{author}}>-->
-                <!--</div>-->
-                <!--</li>-->
                 {{#each invited}}
                 <li>
                   <div class="profile-pic">

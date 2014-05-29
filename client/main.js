@@ -6,9 +6,8 @@ attending = function (event) {
 };
 
 
-displayName = function (user) {
+formatName = function (user) {
   if (user.profile && user.profile.name) {
-    console.log("PROFILE",user.profile.name)
     return user.profile.name
   } else {
     return user.username;
