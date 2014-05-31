@@ -61,51 +61,44 @@ Meteor.startup(function () {
       check(eventId, String);
       check(rsvp, String);
 
-      if (!this.userId)
+      if (!this.userId) {
         throw new Meteor.Error(403, "You must be logged in to RSVP");
-      if (!_.contains(['yes', 'no', 'maybe'], rsvp))
+      }
+      if (!_.contains(['yes', 'no', 'maybe'], rsvp)) {
         throw new Meteor.Error(400, "Invalid RSVP");
+      }
       var event = Events.findOne(eventId);
       if (!event) {
         throw new Meteor.Error(404, "No such event");
       }
-//      console.log(event.userId._id)
-//      console.log("PLUCK",_.pluck(event.invited, '_id'), this.userId)
       if (event.userId._id !== this.userId && !_.contains(_.pluck(event.invited, '_id'), this.userId)) {
         // private, but let's not tell this to the user
         throw new Meteor.Error(403, "No such event");
       }
       var temp = _.pluck(event.rsvps, "user")
       var rsvpIndex = _.indexOf(_.pluck(temp, '_id'), this.userId);
-      console.log(rsvpIndex)
       if (rsvpIndex !== -1) {
         // update existing rsvp entry
-        var before = Events.findOne(eventId)
-        console.log("BEFORE",before)
-//        if (Meteor.isServer) {
-          // update the appropriate rsvp entry with $
-        console.log("UPDATE", eventId, this.userId)
-          Events.update(
-            {_id: eventId, "rsvps.user": this.userId},
-            {$set: {"rsvps.$.rsvp": rsvp}});
-//        }
-        var after = Events.findOne(eventId)
-        console.log("AFTER",after)
+        // if (Meteor.isServer) {
+        // update the appropriate rsvp entry with $
 
-//      else {
-//        // minimongo doesn't yet support $ in modifier. as a temporary
-//        // workaround, make a modifier that uses an index. this is
-//        // safe on the client since there's only one thread.
-//        var modifier = {$set: {}};
-//        modifier.$set["rsvps." + rsvpIndex + ".rsvp"] = rsvp;
-//        Events.update(eventId, modifier);
+//        Events.update(
+//          {_id: eventId, "rsvps.user": this.userId},
+//          {$set: {"rsvps.$.rsvp": rsvp}});
+//        } else {
+        // minimongo doesn't yet support $ in modifier. as a temporary
+        // workaround, make a modifier that uses an index. this is
+        // safe on the client since there's only one thread.
+        var modifier = {$set: {}};
+        modifier.$set["rsvps." + rsvpIndex + ".rsvp"] = rsvp;
+        Events.update(eventId, modifier);
 //      }
 
         // TODO(possible): send email to the other people that are coming to the event.
       } else {
         // add new rsvp entry
-        Events.update(eventId,
-          {$push: {rsvps: {user: this.userId, rsvp: rsvp}}});
+        var newRsvp = {user: Meteor.users.findOne(this.userId), rsvp: rsvp}
+        Events.update(eventId, {$push: {rsvps: newRsvp}});
       }
     }
   });

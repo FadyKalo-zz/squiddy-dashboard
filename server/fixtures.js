@@ -67,9 +67,6 @@ Meteor.startup(function () {
           {user: fady, rsvp: "yes"}
         ],
         invited: [fady]
-//      invited: [
-//        {id: fady}
-//      ]
       });
 
       var event1 = Events.insert({
@@ -84,10 +81,6 @@ Meteor.startup(function () {
           {user: giuseppe, rsvp: "yes"}
         ],
         invited: [giuseppe]
-//      invited: [
-//        {id: fady},
-//        {id: giuseppe}
-//      ]
       });
 
       var event3 = Events.insert({
@@ -102,9 +95,6 @@ Meteor.startup(function () {
           {user: fady, rsvp: "maybe"}
         ],
         invited: [fady]
-//      invited: [
-//        {id: giuseppe}
-//      ]
       });
       var event4 = Events.insert({
         title: 'Late Call',
@@ -118,10 +108,6 @@ Meteor.startup(function () {
           {user: giuseppe, rsvp: "yes"}
         ],
         invited: [giuseppe]
-//      invited: [
-//        {id: fady},
-//        {id: giuseppe}
-//      ]
       });
       var event5 = Events.insert({
         title: 'Video Chat',
@@ -135,10 +121,6 @@ Meteor.startup(function () {
           {user: fady, rsvp: "yes"}
         ],
         invited: [fady]
-//      invited: [
-//        {id: giuseppe},
-//        {id: fady}
-//      ]
       });
 //    }
 
@@ -159,10 +141,6 @@ Meteor.startup(function () {
           {user: giuseppe, rsvp: "no"}
         ],
         invited: [fady, giuseppe]
-//      invited: [
-//        {id: admin},
-//        {id: fady}
-//      ]
       });
     }
   }
